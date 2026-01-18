@@ -1,38 +1,33 @@
 # # Intuition
-# 輸入陣列 // 如果陣列中元素都屬於唯一則輸出true, else false
+# 輸入一串陣列 // 輸出一樣長度，其中每個元素為 排除自己之外的元素相乘乘績
 
 # # Approach
-#  將list轉成set後的長度做比較
+# 迷思: 先算出整個陣列的相乘結果，依序將結果除上自己即可 -> 遇到元素 0 會產生 ZeroDivisionError
+# 解法: 利用前綴乘積 + 後綴乘積，答案 = 前綴 × 後綴。
 
 # # Complexity
 # - Time complexity:O(n)
-# - Space complexity:O(n)
+# - Space complexity:O(1)
 
 # language: Python
+
 class Solution:
     def productExceptSelf(self, nums):
         n = len(nums)
-        res = [1] * n
-        print(res)
+        res = [1] * n # 建立空 list
 
         # 前綴乘積
         prefix = 1
         for i in range(n):
-            print('res', res[i])
             res[i] = prefix
-            print('res', res[i])
             prefix *= nums[i]
-            print('prefix', prefix)
-
+            
         # 後綴乘積
         suffix = 1
         for i in range(n-1, -1, -1):
-            print('res', res[i])
             res[i] *= suffix
-            print('res', res[i])
             suffix *= nums[i]
-            print('suffix', prefix)
-
+            
         return res
     
 nums = [1, 2, 3, 4]
