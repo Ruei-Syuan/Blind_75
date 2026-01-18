@@ -1,4 +1,3 @@
-
 # # Intuition
 # <!-- Describe your first thoughts on how to solve this problem. -->
 # 輸入陣列 // 如果陣列中元素都屬於唯一則輸出true, else false
