@@ -2,7 +2,7 @@
 # 輸入一個陣列，輸出所有三個元素相加為0的數字
 
 # # Approach
-# 解法: 先將一個參數固定，透過雙指標的挪動，進行組合 n^3 --> n^2
+# 解法: 先將一個參數固定(外層迴圈)，透過雙指標的挪動(移除第一個元素 向右尋找)，進行組合 n^3 --> n^2
 
 # # Complexity
 # - Time complexity:O(n^2)
@@ -42,3 +42,6 @@ class Solution(object):
                     else:
                         right -= 1
             return res
+
+# 範例測試
+print(Solution().threeSum([4,5,6,7,0,1,2]))  # 輸出: 0
