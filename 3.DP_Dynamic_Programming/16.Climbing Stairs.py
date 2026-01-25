@@ -1,14 +1,43 @@
 # # Intuition
-# Given a positive integer n, returns the number of set bits in its binary representation (also known as the Hamming weight).
-# 計算正整數 n 的二進位表示中有多少個1，也就是 Hamming weight
+# 輸入n, 一次可以爬1步or2步，請問有幾種方式可以達成
 
 # # Approach
-# Brian Kernighan’s Algorithm (定義：一種計算 Hamming weight 的演算法)
-# REF: 
-# https://170530.medium.com/%E8%A8%88%E7%AE%97-1-%E5%80%8B-word-%E8%A3%A1%E6%9C%89%E5%B9%BE%E5%80%8B-on-%E7%9A%84-bit-00bad633f40d
+# DP，費波那契數列
 
 # # Complexity
-# - Time complexity:O(log n)
-# - Space complexity:O(log n)
+# - Time complexity:O(n)
+# - Space complexity:O(n)
 
 # language: Python
+class Solution(object):
+    def climbStairs(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        # 方法 1：遞迴 + 記憶化
+        # memo = {}
+        # def f(k):
+        #     if k <= 2:
+        #         return k
+        #     if k not in memo:
+        #         memo[k] = f(k-1) + f(k-2)
+        #     return memo[k]
+        # return f(n)
+
+        # 方法 2：動態規劃 (DP)
+        if n <= 2:
+            return n
+        dp = [0]*(n+1)
+        dp[1], dp[2] = 1, 2
+        for i in range(3, n+1):
+            dp[i] = dp[i-1] + dp[i-2]
+        return dp[n]
+
+        # 方法 3：空間優化 (只存兩個變數)
+        # if n <= 2:
+        #     return n
+        # a, b = 1, 2
+        # for _ in range(3, n+1):
+        #     a, b = b, a+b
+        # return b
