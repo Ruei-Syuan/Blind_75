@@ -7,18 +7,16 @@
 # 類似題目：完全背包問題（每個硬幣可以用無限次）
 # - 定義 dp[i] = 湊成金額 i 所需的最少硬幣數。
 # - 初始：dp[0] = 0（湊成 0 不需要硬幣）。
-# - 狀態轉移：
 # dp[i]=min (dp[i-coin]+1)
 # { 
 # for coin in coins  
 # if i - coin >= 0
 # }- 
-# 最後答案是 dp[amount]，如果仍是無限大，回傳 -1。
-
+# 最後答案是 dp[amount]，如果仍是無限大，回傳 -1
 
 # # Complexity
-# - Time complexity:O(log n)
-# - Space complexity:O(log n)
+# - Time complexity:O(amount × coins)
+# - Space complexity:O(amount)
 
 # language: Python
 class Solution(object):
