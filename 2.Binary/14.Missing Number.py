@@ -2,11 +2,11 @@
 # 輸入一個陣列，理論上是從 0-n，輸出少了的人
 
 # # Approach
-# 
+# (1)公式解<效能最佳> (2)XOR bit 運算 (3)排序法
 
 # # Complexity
-# - Time complexity:O(log n)
-# - Space complexity:O(log n)
+# - Time complexity:O(n)
+# - Space complexity:O(1)
 
 # language: Python
 class Solution(object):
