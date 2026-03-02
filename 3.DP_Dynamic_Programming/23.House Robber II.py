@@ -13,13 +13,7 @@
 # language: Python
 class Solution(object):
     def findMax(self, nums):
-        # 初始化 DP 陣列
-        if not nums:
-            return 0
-        
-        if len(nums) == 1:
-            return nums[0]
-        
+        # 初始化 DP 陣列        
         dp = [0] * len(nums)
         
         dp[0] = nums[0]
@@ -39,11 +33,22 @@ class Solution(object):
         # DP切割: 在圓形排列中，第一間房子和最後一間房子不能同時選。
         # 因此我們可以把問題拆成兩種情況：
         # - 不選第一間房子 → 在 nums[1:] 上做線性 DP。
-        # - 不選最後一間房子 → 在 nums[:-1] 上做線性 DP。
+        # - 不選最後一間房子 → 在 nums[:-1] 上做線性 
+        if not nums:
+            print('not')
+            return 0
+        # 防呆要寫在外層，否則取元素錯誤會變成 0 
+        if len(nums) == 1:
+            return nums[0]
+
+        # 加入2個元素防呆 [0, 0]
+        if len(nums) == 2:
+            return max(nums)
+
         val1 = self.findMax(nums[1:])
         val2 = self.findMax(nums[:-1])
-
+        # print(val1, val2)
         return max(val1, val2)
 
 ss = Solution()
-print(ss.rob([1,2,3,1])) #[1,2,3]))
+print(ss.rob([0,0])) #[1,2,3,1])) #[1,2,3]))
