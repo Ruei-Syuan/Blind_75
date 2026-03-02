@@ -1,13 +1,13 @@
 # # Intuition
-# 輸入數列 & 加總目標, 輸出方法數
+# 輸入數列 & 加總目標, 輸出方法數(注意:非組合數)
 
 # # Approach
 # DP- 回溯法（Backtracking）
 # 思路: 利用 DP，每次答案等於上一次解法+1的邏輯
         
 # # Complexity
-# - Time complexity:O(log n)
-# - Space complexity:O(log n)
+# - Time complexity:O(m*n)
+# - Space complexity:O(n)
 
 # language: Python
 class Solution(object):
