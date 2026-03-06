@@ -1,14 +1,33 @@
 # # Intuition
-# Given a positive integer n, returns the number of set bits in its binary representation (also known as the Hamming weight).
-# 計算正整數 n 的二進位表示中有多少個1，也就是 Hamming weight
+# 從 index = 0 開始走，每走一步，下一步必須走現在的值的步數，判斷最遠可否走到最後一個元素
 
 # # Approach
-# Brian Kernighan’s Algorithm (定義：一種計算 Hamming weight 的演算法)
-# REF: 
-# https://170530.medium.com/%E8%A8%88%E7%AE%97-1-%E5%80%8B-word-%E8%A3%A1%E6%9C%89%E5%B9%BE%E5%80%8B-on-%E7%9A%84-bit-00bad633f40d
+# - Greedy = 當下最佳選擇，不回頭
+# 一層迴圈，使用最遠距離
+# - [2,3,1,1,4]
+# - 從 0 開始，能跳到最遠位置是 2。
+# - 到 index 1 時，能跳到最遠位置是 4。
+# - 4 ≥ 最後一格 → 成功。
+# - [3,2,1,0,4]
+# - 到 index 3 時，nums[3] = 0，最遠只能到 3。
+# - 但最後一格在 4 → 卡住
 
 # # Complexity
-# - Time complexity:O(log n)
-# - Space complexity:O(log n)
+# - Time complexity:O(n)
+# - Space complexity:O(n)
 
 # language: Python
+class Solution(object):
+    def canJump(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: bool
+        """
+        maxReach = 0  # 目前能到的最遠位置
+        for i, jump in enumerate(nums):
+            # 如果當前位置超過最遠能到的位置 → 卡住
+            if i > maxReach:
+                return False
+            # 更新最遠能到的位置
+            maxReach = max(maxReach, i + jump)
+        return True
