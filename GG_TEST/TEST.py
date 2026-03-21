@@ -19,10 +19,10 @@ def findZigZagSequence(a, n):
             print(a[i], end = ' ')
     return
 
-test_cases = int(input())
+test_cases = int(input()) #1
 for cs in range (test_cases):
-    n = int(input())
-    a = list(map(int, input().split()))
+    n = int(input()) #5
+    a = list(map(int, input().split())) # 2 3 5 1 4
     findZigZagSequence(a, n)
 
 
